@@ -32,5 +32,4 @@ Provide clear and informative error messages for unexpected conditions.
 
 _**Expected Outcome**_
 
-A functional scientific calculator application with a user-friendly interface capable of performing a wide range of mathematical calculations.
-The calculator should be reliable, efficient, and easy to use.
+A functional scientific calculator application with a user-friendly interface capable of performing a wide range of mathematical calculations. This calculator only work for two input values.
