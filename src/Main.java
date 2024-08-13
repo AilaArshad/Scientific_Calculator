@@ -12,7 +12,7 @@ public class Main {
     static JButton[] functionButtons = new JButton[22];
     static JButton addBtn, subBtn, mulBtn, divBtn, eqBtn, decBtn, clrBtn, delBtn, piBtn, powBtn, sqrtBtn, ansBtn, logBtn, sinBtn, cosBtn, tanBtn, sinhBtn, coshBtn, tanhBtn, sinI_Btn, cosI_Btn, tanI_Btn;
     static JPanel panel;
-    static double num1 = 0, num2 = 0, result = 0;
+    static double num1 = 0, num2 = 0, result = 0, preAns = 0;
     static char operator;
 
     public static void main(String[] args) {
@@ -84,8 +84,8 @@ public class Main {
         functionButtons[20] = tanBtn;
         functionButtons[21] = ansBtn;
 
-        delBtn.setBounds(358,127,112,72);
-        clrBtn.setBounds(472,127,112,72);
+        delBtn.setBounds(358, 127, 112, 72);
+        clrBtn.setBounds(472, 127, 112, 72);
 
         for (int i = 0; i < 10; i++) {
             numberButtons[i] = createButton(String.valueOf(i), myfont, false);
@@ -400,7 +400,7 @@ public class Main {
                                     return;
                             }
                             textField.setText(String.valueOf(result));
-                            num1 = result;
+                            preAns = result;
                         } else {
                             textField.setText("Error");
                         }
@@ -432,6 +432,17 @@ public class Main {
                     String txt = textField.getText();//123
                     textField.setText("");
                     textField.setText(txt.substring(0, txt.length() - 1));//12
+                }
+            }
+        });
+
+        ansBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(textField.getText().isEmpty()) {
+                    textField.setText(preAns + "");
+                }else{
+                    textField.setText(textField.getText()+preAns);
                 }
             }
         });
@@ -488,6 +499,7 @@ public class Main {
                                 return "";
                         }
                         String resultText = String.valueOf(trigResult);
+                        preAns = trigResult;
                         if (!prevText.isEmpty()) {
                             return prevText + " " + resultText;
                         } else {
